@@ -1,0 +1,106 @@
+﻿<Window x:Class="Wpffinalissimo.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Wpffinalissimo"
+        mc:Ignorable="d"
+        Title="Window1" Height="450" Width="800" Loaded="Window_Loaded">
+    <Window.Resources>
+        <local:Database5DataSet x:Key="database5DataSet"/>
+        <CollectionViewSource x:Key="tabla_NegocioViewSource" Source="{Binding Tabla_Negocio, Source={StaticResource database5DataSet}}"/>
+    </Window.Resources>
+    <Grid DataContext="{StaticResource tabla_NegocioViewSource}">
+        <DataGrid x:Name="tabla_NegocioDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="320,23,31,29" RowDetailsVisibilityMode="VisibleWhenSelected">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="idColumn" Binding="{Binding Id}" Header="Id" Width="SizeToHeader"/>
+                <DataGridCheckBoxColumn x:Name="repuestoColumn" Binding="{Binding Repuesto}" Header="Repuesto" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="marcaColumn" Binding="{Binding Marca}" Header="Marca" Width="SizeToHeader"/>
+                <DataGridCheckBoxColumn x:Name="disponibleColumn" Binding="{Binding Disponible}" Header="Disponible" Width="SizeToHeader"/>
+                <DataGridCheckBoxColumn x:Name="serviceColumn" Binding="{Binding Service}" Header="Service" Width="SizeToHeader"/>
+                <DataGridCheckBoxColumn x:Name="lavadoColumn" Binding="{Binding Lavado}" Header="Lavado" Width="SizeToHeader"/>
+                <DataGridCheckBoxColumn x:Name="mecanicoColumn" Binding="{Binding Mecanico}" Header="Mecanico" Width="SizeToHeader"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="Guardar" HorizontalAlignment="Left" Margin="33,357,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.296,4.897" Click="Button_Click"/>
+        <Button Content="Eliminar" HorizontalAlignment="Left" Margin="212,357,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="1.654,1.49"/>
+        <Button Content="Buscar" HorizontalAlignment="Left" Margin="127,357,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.296,4.897" Click="Button_Click"/>
+        <Grid x:Name="grid1" HorizontalAlignment="Left" Margin="34,18,0,0" VerticalAlignment="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Content="Id:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+            <TextBox x:Name="idTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding Id, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+        </Grid>
+        <Grid x:Name="grid2" HorizontalAlignment="Left" Margin="34,70,0,0" VerticalAlignment="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Content="Marca:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+            <TextBox x:Name="marcaTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding Marca, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+        </Grid>
+        <Grid x:Name="grid3" HorizontalAlignment="Left" Margin="39,130,0,0" VerticalAlignment="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Content="Disponible:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+            <CheckBox x:Name="disponibleCheckBox" Content="" Grid.Column="1" HorizontalAlignment="Left" IsChecked="{Binding Disponible, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+        </Grid>
+        <Grid x:Name="grid4" HorizontalAlignment="Left" Margin="58,167,0,0" VerticalAlignment="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Content="Service:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+            <CheckBox x:Name="serviceCheckBox" Content="" Grid.Column="1" HorizontalAlignment="Left" IsChecked="{Binding Service, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+        </Grid>
+        <Grid x:Name="grid5" HorizontalAlignment="Left" Margin="58,216,0,0" VerticalAlignment="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Content="Lavado:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+            <CheckBox x:Name="lavadoCheckBox" Content="" Grid.Column="1" HorizontalAlignment="Left" IsChecked="{Binding Lavado, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+        </Grid>
+        <Grid x:Name="grid6" HorizontalAlignment="Left" Margin="73,272,0,0" VerticalAlignment="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="23.767"/>
+                <ColumnDefinition Width="46.233"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+        </Grid>
+        <Grid x:Name="grid7" HorizontalAlignment="Left" Margin="73,260,0,0" VerticalAlignment="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Content="Mecanico:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+            <CheckBox x:Name="mecanicoCheckBox" Content="" Grid.Column="1" HorizontalAlignment="Left" IsChecked="{Binding Mecanico, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+        </Grid>
+
+    </Grid>
+</Window>
