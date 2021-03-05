@@ -1,0 +1,4 @@
+tiene las propiedades 
+formatos 
+funciones 
+y enlaces a las vistas es la comunicacion ddel proyecto entre el modelo y el view
